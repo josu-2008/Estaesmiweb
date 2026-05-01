@@ -1,0 +1,44 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Tienda</title>
+<style>
+body{background:#0b0b10;color:white;font-family:Arial;padding:20px;}
+.card{background:#1a1a25;padding:15px;margin:10px 0;border-radius:10px;}
+button{background:#25d366;border:none;padding:10px;border-radius:5px;}
+</style>
+</head>
+<body>
+
+<h1>🛍️ Tienda</h1>
+
+<div id="list"></div>
+
+<script>
+let params = new URLSearchParams(window.location.search);
+let store = params.get("store");
+
+let db = JSON.parse(localStorage.getItem("db") || "{}");
+
+let list = document.getElementById("list");
+
+if(db[store]){
+  db[store].forEach(p=>{
+    list.innerHTML += `
+      <div class="card">
+        <h3>${p.name}</h3>
+        <p>$${p.price}</p>
+        <button onclick="buy()">Comprar</button>
+      </div>
+    `;
+  });
+}
+
+function buy(){
+  alert("Compra simulada");
+}
+</script>
+
+</body>
+</html>

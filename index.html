@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Login SaaS</title>
+<style>
+body{background:#0b0b10;color:white;font-family:Arial;text-align:center;padding:50px;}
+input,button{padding:10px;margin:10px;border:none;border-radius:5px;}
+button{background:#d6b25e;font-weight:bold;}
+</style>
+</head>
+<body>
+
+<h1>🚀 Crear tu tienda</h1>
+
+<input id="user" placeholder="Nombre de tu tienda">
+<br>
+<button onclick="enter()">Entrar</button>
+
+<script>
+function enter(){
+  let user = document.getElementById("user").value;
+
+  if(!user){
+    alert("Pon un nombre");
+    return;
+  }
+
+  localStorage.setItem("store", user);
+
+  window.location.href = "dashboard.html";
+}
+</script>
+
+</body>
+</html>

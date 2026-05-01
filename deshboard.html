@@ -1,0 +1,80 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<title>Dashboard</title>
+<style>
+body{background:#0b0b10;color:white;font-family:Arial;padding:20px;}
+input,button{padding:10px;margin:5px;border:none;border-radius:5px;}
+button{background:#d6b25e;font-weight:bold;}
+.card{background:#1a1a25;padding:10px;margin:10px 0;border-radius:8px;}
+</style>
+</head>
+<body>
+
+<h1>📊 Tu Dashboard</h1>
+
+<p id="storeName"></p>
+
+<h3>➕ Crear producto</h3>
+<input id="name" placeholder="Producto">
+<input id="price" placeholder="Precio">
+<button onclick="add()">Agregar</button>
+
+<h3>🛍️ Tus productos</h3>
+<div id="list"></div>
+
+<br>
+<button onclick="goStore()">Ver mi tienda</button>
+
+<script>
+let store = localStorage.getItem("store");
+
+if(!store){
+  window.location.href = "index.html";
+}
+
+document.getElementById("storeName").innerText = "Tienda: " + store;
+
+let db = JSON.parse(localStorage.getItem("db") || "{}");
+
+if(!db[store]){
+  db[store] = [];
+}
+
+function add(){
+  db[store].push({
+    name: name.value,
+    price: price.value
+  });
+
+  save();
+  render();
+}
+
+function render(){
+  let list = document.getElementById("list");
+  list.innerHTML = "";
+
+  db[store].forEach(p=>{
+    list.innerHTML += `
+      <div class="card">
+        ${p.name} - $${p.price}
+      </div>
+    `;
+  });
+}
+
+function save(){
+  localStorage.setItem("db", JSON.stringify(db));
+}
+
+function goStore(){
+  window.location.href = "store.html?store=" + store;
+}
+
+render();
+</script>
+
+</body>
+</html>
