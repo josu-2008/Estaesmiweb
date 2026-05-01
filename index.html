@@ -1,0 +1,185 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Mi Agencia Web</title>
+
+<style>
+body{
+  margin:0;
+  font-family:Arial;
+  background:#f4f4f4;
+  text-align:center;
+}
+
+header{
+  background:#111;
+  color:white;
+  padding:40px 20px;
+}
+
+h1{ margin:0; }
+
+section{
+  padding:30px;
+}
+
+.servicios, .planes{
+  display:grid;
+  grid-template-columns:repeat(2,1fr);
+  gap:20px;
+  max-width:900px;
+  margin:auto;
+}
+
+.card{
+  background:white;
+  padding:20px;
+  border-radius:10px;
+  box-shadow:0 0 10px rgba(0,0,0,0.2);
+}
+
+button{
+  background:#25D366;
+  color:white;
+  border:none;
+  padding:10px;
+  width:100%;
+  cursor:pointer;
+  border-radius:5px;
+  margin-top:10px;
+}
+
+button:hover{
+  background:green;
+}
+
+.whatsapp{
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#25D366;
+  color:white;
+  padding:15px;
+  border-radius:50px;
+  text-decoration:none;
+  font-weight:bold;
+}
+
+footer{
+  background:#111;
+  color:white;
+  padding:10px;
+  margin-top:20px;
+}
+
+/* móvil */
+@media(max-width:600px){
+  .servicios, .planes{
+    grid-template-columns:1fr;
+  }
+}
+</style>
+</head>
+
+<body>
+
+<header>
+  <h1>Mi Agencia Web</h1>
+  <p>Te creo tu página web y consigo clientes para tu negocio</p>
+</header>
+
+<section>
+  <h2>🚀 Servicios</h2>
+  <div class="servicios">
+
+    <div class="card">
+      <h3>Página Web</h3>
+      <p>Web moderna para tu negocio</p>
+    </div>
+
+    <div class="card">
+      <h3>WhatsApp Directo</h3>
+      <p>Clientes te escriben automático</p>
+    </div>
+
+    <div class="card">
+      <h3>Catálogo Online</h3>
+      <p>Muestra tus productos en internet</p>
+    </div>
+
+    <div class="card">
+      <h3>Diseño Profesional</h3>
+      <p>Se ve como empresa real</p>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>💰 Planes Mensuales</h2>
+  <div class="planes">
+
+    <div class="card">
+      <h3>Básico</h3>
+      <p>Soporte + cambios simples</p>
+      <p>$20 / mes</p>
+      <button onclick="contactar('Plan Básico')">Elegir</button>
+    </div>
+
+    <div class="card">
+      <h3>Pro</h3>
+      <p>Soporte + mejoras + prioridad</p>
+      <p>$40 / mes</p>
+      <button onclick="contactar('Plan Pro')">Elegir</button>
+    </div>
+
+    <div class="card">
+      <h3>Premium</h3>
+      <p>Todo incluido + atención rápida</p>
+      <p>$70 / mes</p>
+      <button onclick="contactar('Plan Premium')">Elegir</button>
+    </div>
+
+    <div class="card">
+      <h3>Pago único</h3>
+      <p>Te hago la web completa</p>
+      <p>$150</p>
+      <button onclick="contactar('Web completa')">Elegir</button>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2>📈 Extras que aumentan ganancias</h2>
+  <div class="servicios">
+
+    <div class="card">Dominio propio</div>
+    <div class="card">Carrito de compras</div>
+ 
+    <div class="card">Más productos</div>
+
+  </div>
+</section>
+
+<a class="whatsapp" href="https://wa.me/595982825172" target="_blank">
+WhatsApp
+</a>
+
+<footer>
+© 2026 Mi Agencia Web
+</footer>
+
+<script>
+function contactar(plan){
+  let numero = "595982825172"; // CAMBIA TU NÚMERO
+  let mensaje = "Hola, quiero contratar: " + plan;
+  let url = "https://wa.me/" + numero + "?text=" + encodeURIComponent(mensaje);
+  window.open(url, "_blank");
+}
+</script>
+
+</body>
+</html>
